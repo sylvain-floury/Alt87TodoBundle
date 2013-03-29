@@ -1,0 +1,25 @@
+{
+    "name": "alt87/todo-bundle",
+    "type": "symfony-bundle",
+    "description": "Todo bundle for use with Symfony2",
+    "keywords": ["todo", "bundle"],
+    "homepage": "http://github.com/sylvain-floury/Alt87TodoBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sylvain Floury",
+            "email": "sylvain@floury.name"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2"
+    },
+    "require-dev": {
+        "symfony/framework-bundle": ">=2.1,<2.2-dev"
+    },
+    "autoload": {
+        "psr-0": { "Alt87\\TodoBundle": "" }
+    },
+    "minimum-stability": "dev",
+    "target-dir": "Alt87/TodoBundle"
+}
