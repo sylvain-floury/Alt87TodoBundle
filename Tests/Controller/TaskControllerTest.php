@@ -29,8 +29,8 @@ class TaskControllerTest extends WebTestCase
         $this->assertTrue($crawler->filter('td:contains("Test")')->count() > 0);
 
         // Edit the entity
-        echo $client->getResponse()->getContent();
-        $crawler = $client->click($crawler->selectLink('Edit')->link());
+        //echo $client->getResponse()->getContent();
+        $crawler = $client->click($crawler->selectLink('Éditer')->link());
 
         $form = $crawler->selectButton('Modifier')->form(array(
             'alt87_bundle_todobundle_tasktype[name]'  => 'Foo',

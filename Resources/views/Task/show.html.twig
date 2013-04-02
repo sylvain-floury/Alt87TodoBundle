@@ -1,4 +1,4 @@
-<h1>Task</h1>
+<h1>Tache</h1>
 
 <table class="record_properties">
     <tbody>
@@ -7,11 +7,11 @@
             <td>{{ entity.id }}</td>
         </tr>
         <tr>
-            <th>Name</th>
+            <th>Nom</th>
             <td>{{ entity.name }}</td>
         </tr>
         <tr>
-            <th>Complete</th>
+            <th>Terminée</th>
             <td>{{ entity.complete }}</td>
         </tr>
     </tbody>
@@ -20,18 +20,18 @@
 <ul class="record_actions">
     <li>
         <a href="{{ path('task') }}">
-            Back to the list
+            Retour à la liste
         </a>
     </li>
     <li>
         <a href="{{ path('task_edit', { 'id': entity.id }) }}">
-            Edit
+            Éditer
         </a>
     </li>
     <li>
         <form action="{{ path('task_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+            <button type="submit">Supprimer</button>
         </form>
     </li>
 </ul>
