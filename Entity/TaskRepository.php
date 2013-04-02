@@ -12,4 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class TaskRepository extends EntityRepository
 {
+    /**
+     * 
+     * @return type
+     */
+    public function getCompletedTasks()
+    {
+        return $this->getEntityManager()->findByComplete(1);
+    }
 }

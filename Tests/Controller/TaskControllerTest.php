@@ -15,10 +15,10 @@ class TaskControllerTest extends WebTestCase
         // Create a new entry in the database
         $crawler = $client->request('GET', '/task/');
         $this->assertTrue(200 === $client->getResponse()->getStatusCode());
-        $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
+        $crawler = $client->click($crawler->selectLink('Créer une tache')->link());
 
         // Fill in the form and submit it
-        $form = $crawler->selectButton('Create')->form(array(
+        $form = $crawler->selectButton('Créer')->form(array(
             'alt87_bundle_todobundle_tasktype[name]'  => 'Test',
         ));
 
@@ -29,9 +29,10 @@ class TaskControllerTest extends WebTestCase
         $this->assertTrue($crawler->filter('td:contains("Test")')->count() > 0);
 
         // Edit the entity
+        echo $client->getResponse()->getContent();
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
-        $form = $crawler->selectButton('Edit')->form(array(
+        $form = $crawler->selectButton('Modifier')->form(array(
             'alt87_bundle_todobundle_tasktype[name]'  => 'Foo',
         ));
 
@@ -42,7 +43,7 @@ class TaskControllerTest extends WebTestCase
         $this->assertTrue($crawler->filter('[value="Foo"]')->count() > 0);
 
         // Delete the entity
-        $client->submit($crawler->selectButton('Delete')->form());
+        $client->submit($crawler->selectButton('Suppression')->form());
         $crawler = $client->followRedirect();
 
         // Check the entity has been delete on the list
@@ -59,12 +60,23 @@ class TaskControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/task/new');
         
         // Envoi du formulaire sans nom pour la tâche.
-        $form = $crawler->selectButton('Create')->form(array(
+        $form = $crawler->selectButton('Créer')->form(array(
             'alt87_bundle_todobundle_tasktype[name]'  => '',
         ));
         
         $crawler = $client->submit($form);
         // Vérifie la présence du message d'erreur.
         $this->assertTrue($crawler->filter('html:contains("Veuillez saisir le nom de la tache.")')->count() > 0);
+    }
+    
+    public function testCompletedTasks()
+    {
+        // Create a new client to browse the application
+        $client = static::createClient();
+
+        // Create a new entry in the database
+        $crawler = $client->request('GET', '/task/');
+        
+        //echo $client->getResponse()->getContent(); 
     }
 }
