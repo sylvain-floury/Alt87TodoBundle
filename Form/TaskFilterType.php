@@ -15,8 +15,12 @@ class TaskFilterType extends AbstractType
     {
         $builder
             ->add('id', 'filter_number_range')
-            ->add('name', 'filter_text')
-            ->add('complete', 'filter_choice')
+            ->add('name', 'filter_text', array(
+                'label' => 'nom de la tâche'
+            ))
+            ->add('complete', 'filter_boolean', array(
+                'label' => 'est terminée'
+            ))
         ;
 
         $listener = function(FormEvent $event)
@@ -33,7 +37,7 @@ class TaskFilterType extends AbstractType
                 }
             }
 
-            $event->getForm()->addError(new FormError('Filter empty'));
+            $event->getForm()->addError(new FormError('Filtres vides'));
         };
         $builder->addEventListener(FormEvents::POST_BIND, $listener);
     }

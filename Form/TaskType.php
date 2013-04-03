@@ -12,7 +12,7 @@ class TaskType extends AbstractType
     {
         $builder
             ->add('name', 'text', array(
-                'label' => 'nom de la tache'
+                'label' => 'nom de la tâche'
             ))
             ->add('complete', 'checkbox', array(
                 'label' => 'est terminée',

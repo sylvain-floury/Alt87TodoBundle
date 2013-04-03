@@ -1,12 +1,12 @@
 {% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}
 
 {% block title %}
-{{ parent() }} - Task {{ 'views.new.creation'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+{{ parent() }} - Création de la tâche
 {% endblock %}
 
 {% block page %}
 
-<h1>Task {{ 'views.new.creation'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</h1>
+<h1>Création de la tâche</h1>
 
 <form class="well" action="{{ path('task_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}

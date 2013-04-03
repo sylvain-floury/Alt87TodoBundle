@@ -250,6 +250,31 @@ class TaskController extends Controller
             'delete_form' => $deleteForm->createView(),
         );
     }
+    
+    /**
+     * Completes a Task entiy
+     * 
+     * @Route("/{id}/complete", name="task_complete")
+     * @Method("get")
+     */
+    public function completeAction($id)
+    {
+        
+        $em = $this->getDoctrine()->getManager();
+       
+        $entity = $em->getRepository('Alt87TodoBundle:Task')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Task entity.');
+        }
+        
+        $entity->setComplete(TRUE);
+        $em->persist($entity);
+        $em->flush();
+        
+        return $this->redirect($this->generateUrl('task'));
+    }
+    
     /**
      * Deletes a Task entity.
      *

@@ -1,7 +1,7 @@
 {% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}
 
 {% block title %}
-{{ parent() }} - Task {{ 'views.index.list'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+{{ parent() }} - Liste des tâches
 {% endblock %}
 
 {% block page %}
@@ -9,7 +9,7 @@
 <div class="row">
 
     <div class="span8">
-        <h1>Task {{ 'views.index.list'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</h1>
+        <h1>Liste des tâches</h1>
     </div>
     <div class="span2">
         {% if form_errors(filterForm) %}
@@ -51,8 +51,8 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Name</th>
-            <th>Complete</th>
+            <th>Nom</th>
+            <th>Terminée</th>
             <th>{{ 'views.index.actions'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</th>
         </tr>
     </thead>
@@ -61,14 +61,18 @@
         <tr>
             <td><a href="{{ path('task_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.name }}</td>
-            <td>{{ entity.complete }}</td>
+            <td><div {% if entity.complete %}class="icon-check"{% endif %}><span style="display: none">{{ entity.complete }}</span></div></td>
             <td>
         <a class="btn btn-mini" href="{{ path('task_show', { 'id': entity.id }) }}">
             {{ 'views.actions.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
         </a>
         <a class="btn btn-mini" href="{{ path('task_edit', { 'id': entity.id }) }}">
             {{ 'views.actions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
-        </a>            </td>
+        </a>
+        <a class="btn btn-mini" href="{{ path('task_complete', { 'id': entity.id }) }}">
+            terminer
+        </a>
+            </td>
         </tr>
     {% endfor %}
     </tbody>
@@ -81,7 +85,7 @@
 
         <div class="span8">
     <a class="btn btn-primary likepaginator" href="{{ path('task_new') }}">
-            {{ 'views.index.createnew'|trans({}, 'JordiLlonchCrudGeneratorBundle') }} Task
+            Nouvelle tâche
         </a>
     </div>
     </div>
