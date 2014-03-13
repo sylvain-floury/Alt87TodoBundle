@@ -7,3 +7,8 @@ Il sert de support à une présentation du framwork Symfony.
 =======
 
 Création du bundle.
+
+Étape 2
+=======
+
+Création de l'entité.
