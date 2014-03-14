@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class TaskControllerTest extends WebTestCase
 {
-    /*
+    
     public function testCompleteScenario()
     {
         // Create a new client to browse the application
@@ -16,11 +16,11 @@ class TaskControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/task/');
         $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /task/");
         $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
-
+        
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'alt87_bundle_todobundle_tasktype[field_name]'  => 'Test',
-            // ... other fields to fill
+            'alt87_bundle_todobundle_task[name]'  => 'Test',
+            
         ));
 
         $client->submit($form);
@@ -33,8 +33,7 @@ class TaskControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Edit')->form(array(
-            'alt87_bundle_todobundle_tasktype[field_name]'  => 'Foo',
-            // ... other fields to fill
+            'alt87_bundle_todobundle_task[name]'  => 'Foo',
         ));
 
         $client->submit($form);
@@ -51,5 +50,4 @@ class TaskControllerTest extends WebTestCase
         $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());
     }
 
-    */
 }
