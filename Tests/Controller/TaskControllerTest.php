@@ -32,7 +32,7 @@ class TaskControllerTest extends WebTestCase
         // Edit the entity
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
-        $form = $crawler->selectButton('Edit')->form(array(
+        $form = $crawler->selectButton('Update')->form(array(
             'alt87_bundle_todobundle_task[name]'  => 'Foo',
         ));
 
