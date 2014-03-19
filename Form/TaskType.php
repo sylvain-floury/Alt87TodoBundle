@@ -16,9 +16,10 @@ class TaskType extends AbstractType
     {
         $builder
             ->add('name', 'text', array(
-                'required' => FALSE
+                'label' => 'Nom'
             ))
             ->add('complete', 'checkbox', array(
+                'label' => 'Terminée',
                 'required' => FALSE
             ))
         ;

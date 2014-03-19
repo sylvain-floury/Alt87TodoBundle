@@ -26,7 +26,7 @@ class Task
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Ce champ est obligatoire.")
      */
     private $name;
 

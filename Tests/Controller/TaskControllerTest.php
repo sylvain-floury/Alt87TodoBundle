@@ -15,10 +15,10 @@ class TaskControllerTest extends WebTestCase
         // Create a new entry in the database
         $crawler = $client->request('GET', '/task/');
         $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /task/");
-        $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
+        $crawler = $client->click($crawler->selectLink('Créer une nouvelle tâche')->link());
         
         // Fill in the form and submit it
-        $form = $crawler->selectButton('Create')->form(array(
+        $form = $crawler->selectButton('Créer')->form(array(
             'alt87_bundle_todobundle_task[name]'  => 'Test',
             
         ));
@@ -30,9 +30,9 @@ class TaskControllerTest extends WebTestCase
         $this->assertGreaterThan(0, $crawler->filter('td:contains("Test")')->count(), 'Missing element td:contains("Test")');
 
         // Edit the entity
-        $crawler = $client->click($crawler->selectLink('Edit')->link());
+        $crawler = $client->click($crawler->selectLink('Éditer')->link());
 
-        $form = $crawler->selectButton('Update')->form(array(
+        $form = $crawler->selectButton('Modifier')->form(array(
             'alt87_bundle_todobundle_task[name]'  => 'Foo',
         ));
 
@@ -43,7 +43,7 @@ class TaskControllerTest extends WebTestCase
         $this->assertGreaterThan(0, $crawler->filter('[value="Foo"]')->count(), 'Missing element [value="Foo"]');
 
         // Delete the entity
-        $client->submit($crawler->selectButton('Delete')->form());
+        $client->submit($crawler->selectButton('Supprimer')->form());
         $crawler = $client->followRedirect();
 
         // Check the entity has been delete on the list
@@ -59,13 +59,13 @@ class TaskControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/task/new');
         
         // Envoi du formulaire sans nom pour la tâche.
-        $form = $crawler->selectButton('Create')->form(array(
+        $form = $crawler->selectButton('Créer')->form(array(
             'alt87_bundle_todobundle_task[name]' => '',
         ));
         
         $crawler = $client->submit($form);
         // Vérifie la présence du message d'erreur.
-        $this->assertTrue($crawler->filter('html:contains("This value should not be blank.")')->count() > 0);
+        $this->assertTrue($crawler->filter('html:contains("Ce champ est obligatoire.")')->count() > 0);
     }
 
 }

@@ -1,14 +1,14 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Task list</h1>
+    <h1>Tâches</h1>
 
     <table class="records_list">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>Complete</th>
+                <th>Nom</th>
+                <th>Terminée</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -21,10 +21,10 @@
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('task_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('task_show', { 'id': entity.id }) }}">voir</a>
                     </li>
                     <li>
-                        <a href="{{ path('task_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('task_edit', { 'id': entity.id }) }}">éditer</a>
                     </li>
                 </ul>
                 </td>
@@ -36,7 +36,7 @@
         <ul>
         <li>
             <a href="{{ path('task_new') }}">
-                Create a new entry
+                Créer une nouvelle tâche
             </a>
         </li>
     </ul>
