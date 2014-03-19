@@ -49,5 +49,23 @@ class TaskControllerTest extends WebTestCase
         // Check the entity has been delete on the list
         $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());
     }
+    
+    public function testEmptyTask()
+    {
+        // Création du client de test.
+        $client = static::createClient();
+
+        // Chargement de la vue de création d'une tache.
+        $crawler = $client->request('GET', '/task/new');
+        
+        // Envoi du formulaire sans nom pour la tâche.
+        $form = $crawler->selectButton('Create')->form(array(
+            'alt87_bundle_todobundle_task[name]' => '',
+        ));
+        
+        $crawler = $client->submit($form);
+        // Vérifie la présence du message d'erreur.
+        $this->assertTrue($crawler->filter('html:contains("This value should not be blank.")')->count() > 0);
+    }
 
 }
